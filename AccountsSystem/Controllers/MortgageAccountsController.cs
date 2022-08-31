@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MortgageSystem.Data.DataTransferObjects;
 using MortgageSystem.Data.Models;
 using MortgageSystem.DataConversion;

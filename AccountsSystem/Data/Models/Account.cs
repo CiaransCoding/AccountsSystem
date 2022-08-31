@@ -2,7 +2,7 @@
 
 namespace MortgageSystem.Data.Models
 {
-    public class Account
+    public abstract class Account
     {
         #region Public Properties
         [Key]
