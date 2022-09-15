@@ -123,6 +123,58 @@ namespace MortgageSystem.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error deleting account");
             }
         }
+
+        [Route("/api/MortgageAccounts/Populate")]
+        [HttpPost]
+        public IActionResult Populate()
+        {
+            MortgageAccount mortgageAccount = new(1, 1.23m, 250000m, 505.25m);
+            _mortgageAccountService.CreateAccount(mortgageAccount);
+
+            MortgageAccount mortgageAccount1 = new(1, 3.32m, 505500.25m, 1252.32m);
+            _mortgageAccountService.CreateAccount(mortgageAccount1);
+
+            MortgageAccount mortgageAccount2 = new(1, 4.75m, 101101.01m, 350.97m);
+            _mortgageAccountService.CreateAccount(mortgageAccount2);
+
+            MortgageAccount mortgageAccount3 = new(1, 3.99m, 1000000.22m, 258.98m);
+            _mortgageAccountService.CreateAccount(mortgageAccount3);
+
+            MortgageAccount mortgageAccount4 = new(1, 6.65m, 110000m, 90.25m);
+            _mortgageAccountService.CreateAccount(mortgageAccount4);
+
+            MortgageAccount mortgageAccount5 = new(1, 4.56m, 81000m, 400.99m);
+            _mortgageAccountService.CreateAccount(mortgageAccount5);
+
+            MortgageAccount mortgageAccount6 = new(1, 7.77m, 125250.33m, 70.25m);
+            _mortgageAccountService.CreateAccount(mortgageAccount6);
+
+            MortgageAccount mortgageAccount7 = new(1, 6.32m, 808808m, 777.77m);
+            _mortgageAccountService.CreateAccount(mortgageAccount7);
+
+            MortgageAccount mortgageAccount8 = new(1, 3.12m, 123456m, 897.25m);
+            _mortgageAccountService.CreateAccount(mortgageAccount8);
+
+            MortgageAccount mortgageAccount9 = new(1, 4.11m, 97789m, 97.25m);
+            _mortgageAccountService.CreateAccount(mortgageAccount9);
+
+            return Ok();
+        }
+
+        [Route("/api/MortgageAccounts/Purge")]
+        [HttpDelete]
+        public IActionResult Purge()
+        {
+            var accounts = _mortgageAccountService.GetAllAccounts() ?? new List<MortgageAccount>();
+
+            foreach (var account in accounts)
+            {
+                _mortgageAccountService.DeleteAccount(account.AccountNumber);
+            }
+
+            return Ok();
+        }
+
         #endregion
     }
 }
